@@ -1,7 +1,8 @@
 const Car = require("../models/Car");
 
-async function getAllCars(query) {
+async function getAllCars(query, page) {
   const options = {};
+  const limit = 4;
 
   if (query.search) {
     options.name = new RegExp(query.search, "i");
@@ -18,8 +19,14 @@ async function getAllCars(query) {
 
     options.price.$lte = Number(query.to);
   }
-  const cars = await Car.find(options).lean();
-  return cars;
+  const count = await Car.count(options);
+  const pagesTotal = Math.ceil(count / limit);
+
+  const cars = await Car.find(options)
+    .limit(limit)
+    .skip((page - 1) * limit)
+    .lean();
+  return { cars, pagesTotal };
 }
 
 async function getCarById(id) {

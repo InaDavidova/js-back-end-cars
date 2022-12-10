@@ -108,6 +108,17 @@ main a.btn {
   color: white;
 }
 
+.pagination input[type="submit"] {
+  background-color: #71919e;
+  width: 40px;
+  margin: 30px 10px;
+}
+
+.pagination #selected {
+  background-color: rgb(30, 134, 73);
+  box-shadow: 1px 1px 4px rgb(7, 71, 5);
+}
+
 button:hover {
   background-color: #0b2133;
   color: white;

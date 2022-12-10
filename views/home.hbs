@@ -24,3 +24,23 @@
 {{else}}
   <p class="name">No results!</p>
 {{/each}}
+
+<form action="/" method="GET" class="pagination">
+  <input type="hidden" name="search" value="{{query.search}}"/>
+  <input type="hidden" name="from" value="{{query.from}}"/>
+  <input type="hidden" name="to" value="{{query.to}}"/>
+
+{{#if showFirstPage}}
+  <input type="submit" name="page" value="1"/>
+  <span>...</span>
+{{/if}}
+
+{{#each pages}}
+  <input type="submit" name="page" value="{{page}}" {{#if selected}}id="selected"{{/if}}/>
+{{/each}}
+
+{{#if showLastPage}}
+  <span>...</span>
+  <input type="submit" name="page" value="{{pagesTotal}}"/>
+{{/if}}
+</form>
