@@ -9,3 +9,12 @@
   <a class="btn delete" href="/delete/{{_id}}">Delete</a>
   <a class="btn" href="/update/{{_id}}">Edit</a>
 </div>
+<h2>Accessories</h2>
+ <a class="btn" href="/attach/{{_id}}">Attach Accessory</a>
+<div class="accessories">
+  {{#each accessories}}
+    {{> accessoryCard}}
+  {{else}}
+    <h3 class="italic">This car has no accessories yet...</h3>
+  {{/each}}
+</div>

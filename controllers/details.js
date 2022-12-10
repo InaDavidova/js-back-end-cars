@@ -1,9 +1,9 @@
-const { getCarById } = require("../services/cars");
+const { getCarWithAccessories } = require("../services/cars");
 
-module.exports={
-    async details(req, res){
-        const id = req.params.id;
-        const car = await getCarById(id);
-        res.render('details', car);
-    }
-}
+module.exports = {
+  async details(req, res) {
+    const id = req.params.id;
+    const car = await getCarWithAccessories(id);
+    res.render("details", car);
+  },
+};

@@ -27,6 +27,11 @@ async function getCarById(id) {
   return car;
 }
 
+async function getCarWithAccessories(id) {
+  const car = await Car.findById(id).populate("accessories").lean();
+  return car;
+}
+
 async function createCar(car) {
   const result = new Car(car);
   await result.save();
@@ -40,4 +45,18 @@ async function deleteCar(id) {
   await Car.findByIdAndDelete(id);
 }
 
-module.exports = { getAllCars, getCarById, createCar, deleteCar, updateCar };
+async function attachAccessory(carId, accessoryId) {
+  const car = await Car.findById(carId);
+  car.accessories.push(accessoryId);
+  await car.save();
+}
+
+module.exports = {
+  getAllCars,
+  getCarById,
+  getCarWithAccessories,
+  createCar,
+  deleteCar,
+  updateCar,
+  attachAccessory,
+};

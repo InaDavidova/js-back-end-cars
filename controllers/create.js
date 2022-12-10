@@ -6,13 +6,10 @@ module.exports = {
   },
   async post(req, res) {
     let { name, description, imageUrl, price } = req.body;
-    if (imageUrl === "") {
-      imageUrl = undefined;
-    }
     const car = {
       name,
       description,
-      imageUrl,
+      imageUrl: imageUrl || undefined,
       price: Number(price),
     };
     try {

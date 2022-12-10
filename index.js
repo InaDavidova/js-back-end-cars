@@ -2,6 +2,8 @@ const express = require("express");
 const hbs = require("express-handlebars");
 const { about } = require("./controllers/about");
 const create = require("./controllers/create");
+const createAccessory = require("./controllers/createAccessory");
+const attachAccessory = require("./controllers/attachAccessory");
 const update = require("./controllers/update");
 const { details } = require("./controllers/details");
 const { home } = require("./controllers/home");
@@ -32,6 +34,10 @@ async function start() {
   app.get("/about", about);
   app.get("/details/:id", details);
   app.get("/delete/:id", delCar);
+
+  app.route("/create/accessory")
+  .get(createAccessory.get)
+  .post(createAccessory.post);
   
   app.route("/create")
   .get(create.get)
@@ -40,6 +46,10 @@ async function start() {
   app.route("/update/:id")
   .get(update.get)
   .post(update.post);
+
+  app.route("/attach/:id")
+  .get(attachAccessory.get)
+  .post(attachAccessory.post);
   
   app.all("*", notFound);
 
