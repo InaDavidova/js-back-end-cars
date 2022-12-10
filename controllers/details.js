@@ -1,5 +1,9 @@
+const { getCarById } = require("../services/cars");
+
 module.exports={
-    details(req, res){
-        res.render('details');
+    async details(req, res){
+        const id = req.params.id;
+        const car = await getCarById(id);
+        res.render('details', car);
     }
 }

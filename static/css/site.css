@@ -15,10 +15,12 @@ img {
     width: auto;
 }
 
-img.cube {
+img.car {
     display: block;
     margin: 0 auto;
     text-align: center;
+    object-fit: cover;
+    max-width: 100%;
 }
 
 img.logo {
@@ -68,7 +70,7 @@ h1 {
     text-transform: uppercase;
 }
 
-div.cube {
+div.car {
     display: inline-block;
     border: 1px solid #2b415433;
     background: white;
@@ -76,7 +78,7 @@ div.cube {
     vertical-align: top;
 }
 
-div.cube:hover p.name {
+div.car:hover p.name {
     background: #607588;
     color: white;
 }
@@ -109,6 +111,14 @@ button:hover {
     background-color: #0B2133;
     color: white;
     cursor: pointer;
+}
+
+a.btn.delete{
+background-color: #EF5542;
+display: inline;
+padding: 8px 25px;
+
+
 }
 
 a {
@@ -168,7 +178,7 @@ textarea {
     margin: 8px 0 2em;
 }
 
-input.difficulty {
+input.price {
     width: 20%;
 }
 
