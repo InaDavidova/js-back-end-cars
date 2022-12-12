@@ -1,4 +1,4 @@
-const { Schema, model, default: mongoose } = require("mongoose");
+const { Schema, model, Types: { ObjectId } } = require("mongoose");
 
 const carSchema = new Schema({
   name: { type: String, required: true },
@@ -9,7 +9,8 @@ const carSchema = new Schema({
       "https://t4.ftcdn.net/jpg/00/89/55/15/360_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg",
   },
   price: { type: Number, min: 0, required: true },
-  accessories: [{ type: mongoose.Types.ObjectId, ref: "Accessory" }],
+  accessories: [{ type: ObjectId, ref: "Accessory" }],
+  owner: { type: ObjectId, ref: "User" },
 });
 const Car = model("Car", carSchema);
 

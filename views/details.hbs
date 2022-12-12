@@ -1,18 +1,22 @@
-<h1>{{name}}</h1>
-<img class="car" src="{{imageUrl}}" />
+<h1>{{car.name}}</h1>
+<img class="car" src="{{car.imageUrl}}" />
 <div class="details">
   <p><span>Description:</span>
-    {{description}}
+    {{car.description}}
   </p>
-  <p><span>Price:</span> {{price}}</p>
+  <p><span>Price:</span> {{car.price}}</p>
   <a class="btn" href="/">Back</a>
-  <a class="btn delete" href="/delete/{{_id}}">Delete</a>
-  <a class="btn" href="/update/{{_id}}">Edit</a>
+    {{#if isOwner}}
+      <a class="btn delete" href="/delete/{{car._id}}">Delete</a>
+      <a class="btn" href="/update/{{car._id}}">Edit</a>
+    {{/if}}
 </div>
 <h2>Accessories</h2>
- <a class="btn" href="/attach/{{_id}}">Attach Accessory</a>
+  {{#if isOwner}}
+    <a class="btn" href="/attach/{{car._id}}">Attach Accessory</a>
+  {{/if}}
 <div class="accessories">
-  {{#each accessories}}
+  {{#each car.accessories}}
     {{> accessoryCard}}
   {{else}}
     <h3 class="italic">This car has no accessories yet...</h3>

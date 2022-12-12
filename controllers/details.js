@@ -4,6 +4,13 @@ module.exports = {
   async details(req, res) {
     const id = req.params.id;
     const car = await getCarWithAccessories(id);
-    res.render("details", car);
+
+    let isOwner = false;
+
+    if (req.session.user) {
+      isOwner = req.session.user.id == car.owner;
+    }
+    
+    res.render("details", { car, isOwner });
   },
 };

@@ -9,8 +9,6 @@ module.exports = {
       };
     }, {});
 
-    console.log(query);
-
     const page = Number(req.query.page) || 1;
 
     const { cars, pagesTotal } = await getAllCars(req.query, page);
