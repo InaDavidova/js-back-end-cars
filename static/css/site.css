@@ -59,6 +59,7 @@ main {
   margin: 0 4em;
   border-radius: 15px;
   padding: 2em;
+  min-height:calc(100vh - 15em) ;
 }
 
 div.container {
@@ -274,6 +275,23 @@ h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.error {
+  font: italic;
+  margin-top: 0 0 15px 0;
+  padding: 5px;
+  background-color: #f17363;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  position: relative;
+  top: -40px;
+}
+
+.error.general {
+  top: 0;
 }
 
 footer {

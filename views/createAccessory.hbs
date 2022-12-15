@@ -1,14 +1,36 @@
 <h1>Create Accessory</h1>
+{{#if errors.general}}
+  <p class="error">{{errors.general}}</p>
+{{/if}}
 <div class="form">
   <form action="/create/accessory" method="POST">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" value="{{name}}"/>
+    <label for="name">Name *</label>
+    <input type="text" id="name" name="name" value="{{name}}" />
+
+    {{#if errors.name}}
+      <p class="error">{{errors.name}}</p>
+    {{/if}}
+
     <label for="name">Description</label>
     <textarea id="description" name="description">{{description}}</textarea>
+
+    {{#if errors.description}}
+      <p class="error">{{errors.description}}</p>
+    {{/if}}
+
     <label for="image">ImageUrl</label>
-    <input type="text" id="image" name="imageUrl" value="{{imageUrl}}"/>
+    <input type="text" id="image" name="imageUrl" value="{{imageUrl}}" />
+
+    {{#if errors.imageUrl}}
+      <p class="error">{{errors.imageUrl}}</p>
+    {{/if}}
+
     <label for="price">Price</label>
-    <input type="number" id="price" name="price" value="{{price}}"/>
+    <input type="number" id="price" name="price" value="{{price}}" />
+
+    {{#if errors.price}}
+      <p class="error">{{errors.price}}</p>
+    {{/if}}
 
     <input type="submit" value="Create" />
   </form>

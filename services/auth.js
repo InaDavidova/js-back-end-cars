@@ -7,12 +7,6 @@ async function getUserByUsername(username) {
 }
 
 async function register(username, password) {
-  const isExisting = await getUserByUsername(username);
-
-  if (isExisting) {
-    throw new Error("Username is taken");
-  }
-
   const hashedPassword = await hash(password, 10);
 
   const user = new User({

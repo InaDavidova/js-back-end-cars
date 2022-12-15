@@ -1,14 +1,48 @@
 <h1>Register Form</h1>
+{{#if errors.general}}
+  <p class="error general">{{errors.general}}</p>
+{{/if}}
 <div class="form">
   <form action="/register" method="POST">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" />
+    <label for="username">Username *</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      placeholder="ex. JohnDoe"
+      value="{{user.username}}"
+    />
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" />
+    {{#if errors.username}}
+      <p class="error">{{errors.username}}</p>
+    {{/if}}
 
-    <label for="repeatPassword">Re-Password</label>
-    <input type="password" id="repeatPassword" name="repeatPassword" />
+    <label for="password">Password *</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Must be at least 3 characters"
+      value="{{user.password}}"
+    />
+
+    {{#if errors.password}}
+      <p class="error">{{errors.password}}</p>
+    {{/if}}
+
+    <label for="repeatPassword">Repeat Password *</label>
+    <input
+      type="password"
+      id="repeatPassword"
+      name="repeatPassword"
+      placeholder="Repeat Password"
+      value="{{user.repeatPassword}}"
+    />
+
+    {{#if errors.repeatPassword}}
+      <p class="error">{{errors.repeatPassword}}</p>
+    {{/if}}
+
     <input type="submit" value="Register" />
   </form>
 </div>

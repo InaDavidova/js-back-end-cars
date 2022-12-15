@@ -1,5 +1,6 @@
 const { getCarAndAllAvailableAccessories } = require("../services/accessory");
 const { attachAccessory } = require("../services/cars");
+const mapErrors = require("../util/mapErrors");
 
 module.exports = {
   async get(req, res) {
@@ -10,13 +11,13 @@ module.exports = {
   async post(req, res) {
     const carId = req.params.id;
     const query = req.body;
-    
+
     try {
       await attachAccessory(carId, query.accessory);
       res.redirect(`/details/${carId}`);
     } catch (err) {
-      console.log(err);
-      res.redirect(`/attach/${carId}`);
+      const errors = mapErrors(err);
+      res.render("attachAccessory", {errors});
     }
   },
 };

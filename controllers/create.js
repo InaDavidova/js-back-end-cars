@@ -1,4 +1,5 @@
 const { createCar } = require("../services/cars");
+const mapErrors = require("../util/mapErrors");
 
 module.exports = {
   get(req, res) {
@@ -12,15 +13,15 @@ module.exports = {
       name,
       description,
       imageUrl: imageUrl || undefined,
-      price: Number(price),
+      price: price || undefined,
       owner: ownerId,
     };
     try {
       await createCar(car);
       res.redirect("/");
     } catch (err) {
-      console.log(err);
-      res.redirect("/create");
+      const errors = mapErrors(err);
+      res.render("create", {errors, car});
     }
   },
 };

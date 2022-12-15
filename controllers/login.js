@@ -1,4 +1,5 @@
 const { login } = require("../services/auth");
+const mapErrors = require("../util/mapErrors");
 
 module.exports = {
   get(req, res) {
@@ -17,11 +18,11 @@ module.exports = {
         id: user._id,
         username: user.username,
       };
-      
+
       res.redirect("/");
     } catch (err) {
-      console.log(err);
-      res.render("login");
+      const errors = mapErrors(err);
+      res.render("login", { errors, user: { username, password } });
     }
   },
 };

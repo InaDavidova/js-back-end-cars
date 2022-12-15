@@ -1,4 +1,5 @@
 const { createAccessory } = require("../services/accessory");
+const mapErrors = require("../util/mapErrors");
 
 module.exports = {
   get(req, res) {
@@ -16,8 +17,8 @@ module.exports = {
       await createAccessory(accessory);
       res.redirect("/");
     } catch (err) {
-      console.log(err);
-      res.redirect("/create/accessory", { accessory });
+      const errors = mapErrors(err);
+      res.render("createAccessory", { accessory, errors });
     }
   },
 };

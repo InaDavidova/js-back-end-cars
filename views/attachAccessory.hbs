@@ -1,4 +1,7 @@
 <h1>Attach a new accessory</h1>
+{{#if errors.general}}
+  <p class="error">{{errors.general}}</p>
+{{/if}}
 <div class="form">
   <h2>{{car.name}}</h2>
   <img class="cube" src="{{car.imageUrl}}" />
