@@ -39,7 +39,6 @@ module.exports = {
       }
       res.redirect(`/details/${id}`);
     } catch (err) {
-      console.log(err.message);
       res.render("edit", { car });
     }
   },
